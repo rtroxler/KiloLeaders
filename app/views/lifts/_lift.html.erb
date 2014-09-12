@@ -1,0 +1,9 @@
+<li>
+<span class="content"><%= lift.name%> - <%= lift.weight %> kg</span>
+<span class="timestamp">
+  Posted <%= time_ago_in_words(lift.created_at) %> ago.
+</span>
+<% if current_user?(lift.user) %>
+  <%= link_to "delete", lift, method: :delete, data: { confirm: "You sure?" }, title: lift.name %>
+<% end %>
+</li>

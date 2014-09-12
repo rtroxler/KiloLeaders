@@ -8,4 +8,13 @@
       </h1>
     </section>
   </aside>
+  <div class="span8">
+    <% if @user.lifts.any? %>
+      <h3>Lifts (<%= @user.lifts.count %>)</h3>
+      <ol class="lifts">
+        <%= render @lifts %>
+      </ol>
+      <%= will_paginate @lifts %>
+    <% end %>
+  </div>
 </div>
