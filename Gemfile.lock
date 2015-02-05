@@ -19,6 +19,10 @@ GEM
       activesupport (= 4.0.8)
       arel (~> 4.0.0)
     activerecord-deprecated_finders (1.0.3)
+    activerecord-postgres-hstore (0.7.7)
+      activerecord (>= 3.1)
+      pg-hstore (>= 1.1.5)
+      rake
     activesupport (4.0.8)
       i18n (~> 0.6, >= 0.6.9)
       minitest (~> 4.2)
@@ -26,6 +30,7 @@ GEM
       thread_safe (~> 0.1)
       tzinfo (~> 0.3.37)
     arel (4.0.2)
+    awesome_print (1.6.1)
     bcrypt (3.1.7)
     bcrypt-ruby (3.1.2)
     bootstrap-sass (2.3.2.0)
@@ -72,6 +77,7 @@ GEM
     nokogiri (1.6.3.1)
       mini_portile (= 0.6.0)
     pg (0.15.1)
+    pg-hstore (1.2.0)
     polyglot (0.3.5)
     rack (1.5.2)
     rack-test (0.6.2)
@@ -153,6 +159,8 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  activerecord-postgres-hstore
+  awesome_print
   bcrypt (~> 3.1.7)
   bcrypt-ruby (= 3.1.2)
   bootstrap-sass (= 2.3.2.0)
@@ -163,7 +171,7 @@ DEPENDENCIES
   faker (= 1.1.2)
   jbuilder (= 1.0.2)
   jquery-rails (= 3.0.4)
-  pg (= 0.15.1)
+  pg
   rails (= 4.0.8)
   rails_12factor (= 0.0.2)
   rspec-rails (= 2.13.1)

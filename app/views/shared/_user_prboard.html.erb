@@ -1,0 +1,20 @@
+<% if @prboard %>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Lift</th>
+        <th>Weight</th>
+        <th>Reps</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @prboard.each do |lift, weight| %>
+        <tr>
+          <td><%= lift %></td>
+          <td><%= weight %></td>
+          <td>1</td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>

@@ -10,16 +10,16 @@ namespace :db do
       name  = Faker::Name.name
       email = "example-#{n+1}@railstutorial.org"
       password  = "password"
-      User.create!(name: name,
-                   email: email,
-                   password: password,
-                   password_confirmation: password)
+      User.create!(name: name, email: email, password: password, password_confirmation: password)
     end
     users = User.all(limit: 6)
-    50.times do
-      name = ["snatch", "cnj"].sample
-      weight = rand(90..150)
-      users.each {|user| user.lifts.create!(name: name, weight: weight) }
+    users.each do |user|
+      pr_total = rand(150..330)
+      5.times do |i|
+        total = pr_total * (100 - i) / 100.00
+        user.lifts.create!(name: "snatch", weight: (total * 0.45))
+        user.lifts.create!(name: "cnj", weight: (total * 0.55))
+      end
     end
   end
 end

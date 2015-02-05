@@ -4,6 +4,9 @@ ruby '2.1.2'
 
 gem 'rails', '4.0.8'
 
+gem 'awesome_print'
+gem 'pg'
+gem 'activerecord-postgres-hstore'
 gem 'bootstrap-sass', '2.3.2.0'
 gem 'sprockets', '2.11.0'
 gem 'bcrypt-ruby', '3.1.2'
@@ -35,6 +38,5 @@ group :doc do
 end
 
 group :production do
-  gem 'pg', '0.15.1'
   gem 'rails_12factor', '0.0.2'
 end

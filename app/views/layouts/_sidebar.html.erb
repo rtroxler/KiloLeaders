@@ -1,0 +1,10 @@
+<% if signed_in? %>
+  <aside class="span3">
+    <section>
+      <%= render 'shared/user_info' %>
+    </section>
+    <section>
+      <%= render 'shared/lift_form' %>
+    </section>
+  </aside>
+<% end %>

@@ -5,11 +5,13 @@ class LiftsController < ApplicationController
   def create
     @lift = current_user.lifts.build(lift_params)
     if @lift.save
-      flash[:success] = "Lift has been created."
-      redirect_to root_url
-    else
-      @feed_items = []
-      render 'static_pages/home'
+      if @lift
+        flash[:success] = "Lift has been created."
+        redirect_to root_url
+      else
+        @feed_items = []
+        render 'static_pages/home'
+      end
     end
   end
 
@@ -20,12 +22,12 @@ class LiftsController < ApplicationController
 
   private
 
-    def lift_params
-      params.require(:lift).permit(:name, :weight)
-    end
+  def lift_params
+    params.require(:lift).permit(:name, :weight)
+  end
 
-    def correct_user
-      @lift = current_user.lifts.find_by(id: params[:id])
-      redirect_to root_url if @lift.nil?
-    end
+  def correct_user
+    @lift = current_user.lifts.find_by(id: params[:id])
+    redirect_to root_url if @lift.nil?
+  end
 end
