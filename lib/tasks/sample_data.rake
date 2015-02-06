@@ -6,14 +6,13 @@ namespace :db do
                  password: "password",
                  password_confirmation: "password",
                  admin: true)
-    99.times do |n|
+    49.times do |n|
       name  = Faker::Name.name
       email = "example-#{n+1}@railstutorial.org"
       password  = "password"
       User.create!(name: name, email: email, password: password, password_confirmation: password)
     end
-    users = User.all(limit: 6)
-    users.each do |user|
+    User.all.each do |user|
       pr_total = rand(150..330)
       5.times do |i|
         total = pr_total * (100 - i) / 100.00

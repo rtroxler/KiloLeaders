@@ -1,0 +1,21 @@
+<%
+    lift ||= "snatch"
+%>
+<table class="table table-striped">
+<thead>
+  <tr>
+    <th>User</th>
+    <th>Weight</th>
+    <th>Reps</th>
+  </tr>
+</thead>
+<tbody>
+  <% @leaderboard_hash.each do |user_id, lift_hash| %>
+    <tr>
+      <td><%= User.find(user_id.to_i).name %></td>
+      <td><%= lift_hash[lift] %> kg</td>
+      <td>1</td>
+    </tr>
+  <% end %>
+</tbody>
+</table>
