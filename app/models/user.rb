@@ -1,11 +1,10 @@
 class User < ActiveRecord::Base
   has_many :lifts, dependent: :destroy
+  has_one :pr_board, dependent: :destroy
+  has_many :pr_lifts, :through => :pr_board
 
-  # PR Board lifts
-  store_accessor :prboard, :snatch
-  store_accessor :prboard, :cnj
+  before_create :build_pr_board
 
-  #need to set up validations for all of these
 
   before_save { self.email = email.downcase }
   before_create :create_remember_token

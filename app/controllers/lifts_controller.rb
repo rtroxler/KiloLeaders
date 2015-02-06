@@ -5,13 +5,11 @@ class LiftsController < ApplicationController
   def create
     @lift = current_user.lifts.build(lift_params)
     if @lift.save
-      if @lift
-        flash[:success] = "Lift has been created."
-        redirect_to root_url
-      else
-        @feed_items = []
-        render 'static_pages/home'
-      end
+      flash[:success] = "Lift has been created."
+      redirect_to :back
+    else
+      @feed_items = []
+      #render 'users/show'
     end
   end
 

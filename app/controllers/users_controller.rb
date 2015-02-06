@@ -15,7 +15,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @lifts = @user.lifts.paginate(page: params[:page])
-    @prboard = @user.prboard
+    @pr_lifts = @user.pr_lifts
   end
 
   def create

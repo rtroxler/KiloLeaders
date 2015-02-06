@@ -1,5 +1,7 @@
 class Lift < ActiveRecord::Base
   belongs_to :user
+  belongs_to :pr_board
+  include Comparable
 
   default_scope -> { order('created_at DESC') }
 
@@ -11,14 +13,15 @@ class Lift < ActiveRecord::Base
 
   private
 
-  # set up a before save to set PR if PR?
   def check_if_pr
-    Rails.logger.ap self.user.prboard
-    user_pr = self.user.public_send(self.name)
-    if user_pr.nil? || self.weight > user_pr.to_i
-      self.user.public_send(self.name + "=", self.weight)
-      self.user.save!
+    existing_pr = self.user.pr_lifts.where(name: self.name, reps: self.reps).first
+    if !existing_pr || self > existing_pr
+      existing_pr.update! pr_board_id: nil if existing_pr
+      self.pr_board = self.user.pr_board
     end
   end
 
+  def <=> other_lift
+    self.weight <=> other_lift.weight
+  end
 end

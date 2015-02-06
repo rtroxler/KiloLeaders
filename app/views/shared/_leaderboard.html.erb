@@ -1,20 +1,23 @@
 <%
-    lift ||= "snatch"
+    lift_name ||= "snatch"
 %>
 <table class="table table-striped">
 <thead>
   <tr>
+    <th>Rank</th>
     <th>User</th>
     <th>Weight</th>
     <th>Reps</th>
   </tr>
 </thead>
 <tbody>
-  <% @leaderboard_hash.each do |user_id, lift_hash| %>
+  <% @leaderboard.each.with_index(1) do |user, idx| %>
+    <% lift = user.pr_lifts.where(name: lift_name).first %>
     <tr>
-      <td><%= User.find(user_id.to_i).name %></td>
-      <td><%= lift_hash[lift] %> kg</td>
-      <td>1</td>
+      <td><%= idx %></td>
+      <td><%= user.name %></td>
+      <td><%= lift.weight %> kg</td>
+      <td><%= lift.reps %> </td>
     </tr>
   <% end %>
 </tbody>

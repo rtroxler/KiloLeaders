@@ -2,13 +2,14 @@ class StaticPagesController < ApplicationController
 
   def home
     if signed_in?
+      #need to find a better home for this, App controller probably
       @lift = current_user.lifts.build if signed_in?
-      @feed_items = current_user.feed.paginate(page: params[:page])
-      @prboard = current_user.prboard
-      #build leaderboard
-      @leaderboard_hash = {}
-      User.all.each {|u| @leaderboard_hash[u.id.to_s] = u.prboard }
+
+
+      # gotta - this so it sorts highest first ;)
+      @leaderboard = User.all.sort_by {|u| - u.pr_lifts.where(name: "snatch", reps: 1).first.weight }
       # will want a leaderboard helper, that takes the leaderboard hash and manipulates it based off what the user selects as the lift
+      # This will just be list of users sorted by default (snatch for now)
     end
   end
 

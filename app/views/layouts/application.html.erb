@@ -14,7 +14,7 @@
       <div class="row">
         <%= render 'layouts/sidebar' if signed_in? %>
         <% flash.each do |key, value| %>
-          <div class="alert alert-<%= key %>"><%= value %></div>
+          <div class="alert alert-<%= key %> span7"><%= value %></div>
         <% end %>
         <%= yield %>
       </div>
