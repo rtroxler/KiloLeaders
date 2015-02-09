@@ -1,7 +1,7 @@
 <%= form_for(@lift) do |f| %>
   <%= render 'shared/error_messages', object: f.object %>
   <div class="field">
-    <%= f.select :name, options_for_select(@lifts), :class => 'lift-selector', :style => "width:95%" %>
+    <%= f.select :name, options_for_select(@lifts), {}, {:class => 'lift-selector', :style => "width:95%" } %>
     <%= f.text_field :weight, placeholder: "weight (kg)", size: 10 %>
   </div>
   <%= f.submit "Post new lift", class: "btn btn-large btn-primary" %>
