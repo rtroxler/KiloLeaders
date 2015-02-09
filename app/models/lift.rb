@@ -11,6 +11,8 @@ class Lift < ActiveRecord::Base
 
   before_save :check_if_pr
 
+  LIFTS = [:snatch, :clean_and_jerk, :squat, :bench, :deadlift]
+
   private
 
   def check_if_pr

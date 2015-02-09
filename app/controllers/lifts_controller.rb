@@ -6,6 +6,7 @@ class LiftsController < ApplicationController
     @lift = current_user.lifts.build(lift_params)
     if @lift.save
       flash[:success] = "Lift has been created."
+      @lift_name = @lift.name.to_s.parameterize.underscore
       redirect_to :back
     else
       @feed_items = []
@@ -21,7 +22,9 @@ class LiftsController < ApplicationController
   private
 
   def lift_params
-    params.require(:lift).permit(:name, :weight)
+    p = params.require(:lift).permit(:name, :weight)
+    p[:name] = p[:name].parameterize.underscore.to_sym
+    p
   end
 
   def correct_user

@@ -1,6 +1,11 @@
 <%
     lift_name ||= "snatch"
 %>
+<div class="row">
+<h3>PR LeaderBoard -
+<%= select_tag "lifts", options_for_select(@lifts, "snatch"), :class => 'lift-selector' %>
+</h3>
+</div>
 <table class="table table-striped">
 <thead>
   <tr>
@@ -22,3 +27,4 @@
   <% end %>
 </tbody>
 </table>
+

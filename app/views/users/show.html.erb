@@ -14,9 +14,9 @@
     <% if @user.lifts.any? %>
       <h3>Lifts (<%= @user.lifts.count %>)</h3>
       <ol class="lifts">
-        <%= render @lifts %>
+        <%= render @user_lifts %>
       </ol>
-      <%= will_paginate @lifts %>
+      <%= will_paginate @user_lifts %>
     <% end %>
   </div>
 </div>

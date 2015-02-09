@@ -1,7 +1,5 @@
 <% if signed_in? %>
     <div class="span8">
-      <h3>PR LeaderBoard - Snatch</h3>
-      <%= render 'shared/leaderboard' %>
     </div>
 <% else %>
   <div class="center hero-unit">
@@ -14,4 +12,18 @@
     <%= link_to "Sign up now!", signup_path, class: "btn btn-large btn-primary" %>
     </div>
   <% end %>
+
+<% content_for :scripts do %>
+<script>
+(function() {
+    var chosen_options = {
+      no_results_text: "No lifts match: ",
+      width: "30%"
+    }
+
+    $('.lift-selector').chosen(chosen_options);
+
+})();
+</script>
+<% end %>
 

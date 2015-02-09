@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   get "users/new"
-  root 'static_pages#home'
+  root 'leaderboards#index'
   match '/about',    to: 'static_pages#about',  via: 'get'
   match '/signup',  to: 'users#new',                via: 'get'
   match '/signin',  to: 'sessions#new',         via: 'get'
@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
   resources :lifts, only: [:create, :destroy]
+  put '/leaderboards' => 'leaderboards#update', as: :update_leaderboards
+  resources :leaderboards, only: [:index]
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
